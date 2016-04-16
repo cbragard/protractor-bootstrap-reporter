@@ -1,0 +1,38 @@
+{
+  "name": "protractor-html-reporter",
+  "version": "0.0.1",
+  "description": "HTML reporter for Jasmine2 and Protractor",
+  "main": "index.js",
+  "scripts": {
+    "test": "protractor protractor.config.js",
+    "install" : "node ./node_modules/protractor/bin/webdriver-manager update"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cbragard/protractor-html-reporter.git"
+  },
+  "keywords": [
+    "jasmine2",
+    "protractor",
+    "reporter",
+    "html",
+    "test",
+    "functional testing",
+    "screenshots",
+    "end2end",
+    "bdd"
+  ],
+  "author": "Christophe Bragard <christophe.bragard@e-xode.net> (http://www.e-xode.net/)",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/cbragard/protractor-html-reporter/issues"
+  },
+  "dependencies": {
+    "mkdirp": "^0.5.0"
+  },
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "protractor": "^3.1.1",
+    "phantomjs-prebuilt"  : "2.1.7"
+  }
+}
