@@ -1,11 +1,11 @@
 {
   "name": "protractor-html-reporter",
   "version": "0.0.1",
-  "description": "HTML reporter for Jasmine2 and Protractor",
+  "description": "HTML reporter for Protractor and jasmine2",
   "main": "index.js",
   "scripts": {
     "test": "protractor protractor.config.js",
-    "install" : "node ./node_modules/protractor/bin/webdriver-manager update"
+    "install" : "webdriver-manager update"
   },
   "repository": {
     "type": "git",
@@ -31,8 +31,8 @@
     "mkdirp": "^0.5.0"
   },
   "devDependencies": {
-    "jasmine": "^2.4.1",
-    "protractor": "^3.1.1",
+    "jasmine": "2.4.1",
+    "protractor": "3.2.2",
     "phantomjs-prebuilt"  : "2.1.7"
   }
 }

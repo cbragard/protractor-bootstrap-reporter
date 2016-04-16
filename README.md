@@ -1,6 +1,9 @@
 # protractor-html-reporter
 
-Html reporter for protractor and phantomjs.
+Html reporter for protractor and jasmine2 :
+  - provides json / html & png formats for each test/spec
+  - bootstrap layout
+
 
 * install:
   - git clone git@github.com:cbragard/protractor-html-reporter.git
