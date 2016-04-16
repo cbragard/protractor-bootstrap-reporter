@@ -22,7 +22,7 @@
     "end2end",
     "bdd"
   ],
-  "author": "Christophe Bragard <christophe.bragard@e-xode.net> (http://www.e-xode.net/)",
+  "author": "Christophe Bragard <christophe.bragard@e-xode.net> (http://github.e-xode.net/)",
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/cbragard/protractor-html-reporter/issues"
