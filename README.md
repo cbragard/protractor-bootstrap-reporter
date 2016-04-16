@@ -23,6 +23,7 @@ Html reporter for protractor and phantomjs.
         onPrepare: function() {
             var ProtractorHTMLReporter = require('./index.js');
             jasmine.getEnv().addReporter(new ProtractorHTMLReporter({
+                path: 'spec/report'
             }));
         }
     };
