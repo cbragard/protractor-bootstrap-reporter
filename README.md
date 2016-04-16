@@ -5,15 +5,7 @@ Html reporter for protractor and jasmine2 :
   - bootstrap layout
 
 
-* install:
-  - git clone git@github.com:cbragard/protractor-html-reporter.git
-  - cd protractor-html-reporter
-  - npm install
-
-* test:
-  * npm test
-
-* use in protractor.config :
+* protractor.config :
   ```javascript
     exports.config = {
         capabilities: {
@@ -32,10 +24,10 @@ Html reporter for protractor and jasmine2 :
     };
   ```
 
-* how to check generated reporting files :
+* generated reporting files :
   * ./spec/report/html/(spec).html
   * ./spec/report/json/(spec).json
   * ./spec/report/png/(spec).png
 
-* get the complete html report on browser:
-  * open ./spec/report/html/index.html
+* complete html report on browser:
+  * ./spec/report/html/index.html
