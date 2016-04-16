@@ -152,7 +152,7 @@ function ProtractorHTMLReporter(options) {
         }
         html += '</ul>';
         var data = docHtml(html);
-        var filename = options.path + '/html/' + suite.id + '.html';
+        var filename = options.path + '/html/index.html';
         return fs.writeFile(filename, data, function (err) {
             return console.log(err);
         });
