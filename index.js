@@ -168,7 +168,6 @@ function ProtractorHTMLReporter(options) {
             });
         });
     }
-
     _self.suiteDone = function(suite) {
     };
     return _self;

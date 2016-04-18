@@ -4,7 +4,8 @@
   "description": "HTML reporter for Protractor and jasmine2",
   "main": "index.js",
   "scripts": {
-    "test": "protractor protractor.config.js",
+    "test": "mocha spec/index-test.js",
+    "e2e": "protractor protractor.config.js",
     "install" : "webdriver-manager update"
   },
   "repository": {
@@ -28,11 +29,12 @@
     "url": "https://github.com/cbragard/protractor-html-reporter/issues"
   },
   "dependencies": {
-    "mkdirp": "^0.5.0"
-  },
-  "devDependencies": {
-    "jasmine": "2.4.1",
+    "mkdirp": "^0.5.0",
     "protractor": "3.2.2",
     "phantomjs-prebuilt"  : "2.1.7"
+  },
+  "devDependencies": {
+    "mocha" : "2.4.5",
+    "chai" : "3.5.0"
   }
 }

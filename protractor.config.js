@@ -8,7 +8,7 @@ exports.config = {
     },
     framework: 'jasmine2',
     directConnect: false,
-    specs: ['spec/**/*[sS]pec.js'],
+    specs: ['spec/**/*.e2e.js'],
     onPrepare: function() {
         var ProtractorHTMLReporter = require('./index.js');
         jasmine.getEnv().addReporter(new ProtractorHTMLReporter({
