@@ -94,9 +94,14 @@ function ProtractorHTMLReporter(options) {
                 var data = JSON.stringify(spec);
                 break;
         }
-        var filename = path + '/' + fmt + '/' + spec.id + '.' + fmt;
-        return fs.writeFile(filename, data, function (err) {
-            return console.log(err);
+        var folder = options.path + '/' + fmt + '/';
+        mkdirp(folder, function (err) {
+            if(err) {
+                throw new Error('Error folder creation ' + folder);
+            }
+            var filename = path + '/' + fmt + '/' + spec.id + '.' + fmt;
+            fs.writeFile(filename, data, function (err) {
+            });
         });
     }
 
@@ -111,9 +116,6 @@ function ProtractorHTMLReporter(options) {
         return name.replace(/[^a-zA-Z0-9\-]/gi, '');
     }
 
-    _self.specStarted = function(spec) {
-    }
-
     _self.specDone = function(spec) {
         _specs.push(spec);
         writeSpec(options.path, 'json', spec);
@@ -121,17 +123,18 @@ function ProtractorHTMLReporter(options) {
         spec.screenshot = spec.id + '.png';
         browser.takeScreenshot().then(function (png) {
             browser.getCapabilities().then(function (capabilities) {
-                mkdirp(path.dirname(options.path + '/png/'), function (err) {
+                var folder =  options.path + '/png/';
+                mkdirp(folder, function (err) {
                     if (err) {
-                        throw new Error('Could not create directory for ' + options.path + '/png/');
+                        throw new Error('Error folder creation ' + folder);
                     }
-                    writeScreenshot(png, options.path + '/png/' + spec.screenshot);
+                    writeScreenshot(png, folder + spec.screenshot);
                 });
             });
         });
     }
 
-    _self.suiteDone = function(suite) {
+    _self.jasmineDone = function() {
         var html = '<ul class="list-group">';
         for(var i = 0; i < _specs.length; i++) {
             var clzz = (_specs[i].status == 'success')  ? 'alert-success' : 'alert-danger';
@@ -153,11 +156,21 @@ function ProtractorHTMLReporter(options) {
         html += '</ul>';
         var data = docHtml(html);
         var filename = options.path + '/html/index.html';
-        return fs.writeFile(filename, data, function (err) {
-            return console.log(err);
+        var folder = options.path + '/html/';
+        mkdirp(folder, function (err) {
+            if (err) {
+                throw new Error('Error folder creation ' + folder);
+            }
+            fs.writeFile(filename, data, function (err) {
+                if(err) {
+                    console.log('Error writting ' + filename);
+                }
+            });
         });
-    };
+    }
 
+    _self.suiteDone = function(suite) {
+    };
     return _self;
 }
 module.exports = ProtractorHTMLReporter;
