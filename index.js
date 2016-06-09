@@ -167,9 +167,20 @@ function ProtractorHTMLReporter(options) {
                 }
             });
         });
+
+        var data = JSON.stringify(_specs);
+        var filename = options.path + '/json/index.json';
+        var folder = options.path + '/json/';
+        fs.writeFile(filename, data, function (err) {
+            if(err) {
+                console.log('Error writting ' + filename);
+            }
+        });
     }
+
     _self.suiteDone = function(suite) {
-    };
+    }
+
     return _self;
 }
 module.exports = ProtractorHTMLReporter;
