@@ -1,6 +1,6 @@
 {
   "name": "protractor-html-reporter",
-  "version": "0.5",
+  "version": "0.0.5",
   "description": "HTML reporter for Protractor and jasmine2",
   "main": "index.js",
   "scripts": {
