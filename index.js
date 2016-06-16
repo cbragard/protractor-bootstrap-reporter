@@ -101,6 +101,9 @@ function ProtractorHTMLReporter(options) {
             }
             var filename = path + '/' + fmt + '/' + spec.id + '.' + fmt;
             fs.writeFile(filename, data, function (err) {
+                if(err) {
+                    console.log('Error writting ' + filename);
+                }
             });
         });
     }
@@ -137,7 +140,20 @@ function ProtractorHTMLReporter(options) {
     _self.jasmineDone = function() {
         var html = '<ul class="list-group">';
         for(var i = 0; i < _specs.length; i++) {
-            var clzz = (_specs[i].status == 'success')  ? 'alert-success' : 'alert-danger';
+            var clzz = '';
+            switch(_specs[i].status.trim()) {
+                case 'passed':
+                    clzz = 'alert-success';
+                    break;
+
+                case 'disabled':
+                    clzz = 'alert-info';
+                    break;
+
+                default:
+                    clzz = 'alert-danger';
+                    break;
+            }
             html += '<li class="list-group-item">' +
                 '<div class="media">' +
                     '<div class="media-left">' +
@@ -147,8 +163,8 @@ function ProtractorHTMLReporter(options) {
                         '<a href="' + _specs[i].id + '.html" target="_blank">' +
                             _specs[i].fullName +
                         '</a>' +
-                        '<div class="alert ' + clzz + '">' + _specs[i].status +' </div>' +
                         '<div class="alert alert-info">' + _specs[i].description  +' </div>' +
+                        '<div class="alert ' + clzz + '">' + _specs[i].status +' </div>' +
                     '</div>' +
                 '</div>' +
             '</li>';
@@ -156,21 +172,14 @@ function ProtractorHTMLReporter(options) {
         html += '</ul>';
         var data = docHtml(html);
         var filename = options.path + '/html/index.html';
-        var folder = options.path + '/html/';
-        mkdirp(folder, function (err) {
-            if (err) {
-                throw new Error('Error folder creation ' + folder);
+        fs.writeFile(filename, data, function (err) {
+            if(err) {
+                console.log('Error writting ' + filename);
             }
-            fs.writeFile(filename, data, function (err) {
-                if(err) {
-                    console.log('Error writting ' + filename);
-                }
-            });
         });
 
         var data = JSON.stringify(_specs);
         var filename = options.path + '/json/index.json';
-        var folder = options.path + '/json/';
         fs.writeFile(filename, data, function (err) {
             if(err) {
                 console.log('Error writting ' + filename);

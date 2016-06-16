@@ -1,6 +1,6 @@
 {
   "name": "protractor-html-reporter",
-  "version": "0.0.1",
+  "version": "0.5",
   "description": "HTML reporter for Protractor and jasmine2",
   "main": "index.js",
   "scripts": {
@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "mkdirp": "^0.5.0",
-    "protractor": "3.2.2",
+    "protractor": "3.3.0",
     "phantomjs-prebuilt"  : "2.1.7"
   },
   "devDependencies": {
