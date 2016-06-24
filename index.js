@@ -30,7 +30,7 @@ function ProtractorHTMLReporter(options) {
                         clzz = (spec[property] == 'success')  ? 'alert-success' : 'alert-danger';
                         break;
                 }
-                if (typeof spec[property] == "object") {
+                if (typeof spec[property] == "object" && property !== null) {
                     i++;
                     var count = spec[property].length ? '(' + spec[property].length + ')' : '';
                     html += '<button class="btn btn-default ' + clzz + '" data-toggle="collapse" data-target="#inn' + lvl +  i + '">' + property + ' ' + count + ' </button> \n';
