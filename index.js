@@ -25,21 +25,42 @@ function ProtractorHTMLReporter(options) {
                     case 'passedExpectations':
                         clzz =  'btn-success';
                         break;
-                    case 'pendingReason':
                     case 'status':
-                        clzz = (spec[property] == 'success')  ? 'alert-success' : 'alert-danger';
+                        switch(spec[property]) {
+                            case 'passed':
+                                clzz = 'alert-success';
+                            break;
+                            case 'failed':
+                                clzz = 'alert-danger';
+                            break;
+                            case 'disabled':
+                                clzz = 'alert-warning';
+                            break;
+                            default:
+                                clzz = 'alert-info';
+                            break;
+                        }
+                        break;
+                    default:
+                        clzz = 'alert-info';
                         break;
                 }
-                if (typeof spec[property] == "object") {
+                if (property !== null && typeof spec[property] === "object") {
                     i++;
-                    var count = spec[property].length ? '(' + spec[property].length + ')' : '';
-                    html += '<button class="btn btn-default ' + clzz + '" data-toggle="collapse" data-target="#inn' + lvl +  i + '">' + property + ' ' + count + ' </button> \n';
+                    var count = spec[property].length || 'item';
+                    html += '<button class="btn btn-default ' + clzz + '" data-toggle="collapse" data-target="#inn' + lvl +  i + '">' + count + ' ' + property + ' </button> \n';
                     html += iterateHtml(spec[property], i, lvl);
                 } else {
-                    if(property == 'id') {
-                        html += '<div class="alert alert-default ' + clzz + '"><span class="badge">' + property + '</span> <a href="../json/' + spec.id + '.json" target="_blank">' + spec[property] + '</a></div> \n';
+                    if(property === 'id') {
+                        html += '<div class="well">' +
+                            '<strong>' + spec[property] + '</strong> ' +
+                            '<a href="../json/' + spec.id + '.json" target="_blank">' +
+                                '<span class="glyphicon glyphicon-wrench"></span> ' +
+                                ' JSON ' +
+                            '</a>' +
+                        '</div> \n';
                     } else {
-                        html += '<div class="alert alert-default ' + clzz + '"><span class="badge">' + property + '</span> ' + spec[property] + '</div> \n';
+                        html += '<div class="well"><strong>' + property + '</strong> ' + spec[property] + '</div> \n';
                     }
                 }
             }
@@ -51,21 +72,26 @@ function ProtractorHTMLReporter(options) {
     }
 
     function docHtml(html, spec) {
+        var nav =
+        '<nav class="navbar navbar-inverse navbar-static-top">' +
+          '<div class="container">' +
+            '<div class="navbar-header">' +
+              '<a class="navbar-brand" href="index.html">Protractor Html Reporter</a>' +
+            '</div>'+
+          '</div>' +
+        '</nav>';
         if(spec) {
-            var data = '<div class="row">' +
-                '<div class="media">' +
-                    '<div class="media-body">' +
-                        html  +
-                    '</div>' +
-                    '<div class="media-right">' +
-                        '<img src="../png/' + spec.id + '.png" alt="' + spec.id + '" class="">' +
-                    '</div>' +
+            var data = nav +
+            '<div class="media">' +
+                '<div class="media-body">' +
+                    html  +
+                '</div>' +
+                '<div class="media-right">' +
+                    '<img src="../png/' + spec.id + '.png" alt="' + spec.id + '" class="">' +
                 '</div>' +
             '</div>';
         } else {
-            var data = '<div class="row">' +
-                html  +
-            '</div>';
+            var data = nav + html;
         }
         var doc = '' +
             '<html> \n' +
@@ -73,9 +99,7 @@ function ProtractorHTMLReporter(options) {
                     '\t\t <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="all"/> \n' +
                 '\t </head> \n' +
                 '<body> \n' +
-                    '<div class="container-fluid">' +
-                        data +
-                    '</div>' +
+                    '<div class="container">' + data + '</div>' +
                     '<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>' +
                     '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> \n' +
                 '</body> \n' +
@@ -143,28 +167,35 @@ function ProtractorHTMLReporter(options) {
             var clzz = '';
             switch(_specs[i].status.trim()) {
                 case 'passed':
-                    clzz = 'alert-success';
+                    clzz = 'btn-success';
                     break;
 
                 case 'disabled':
-                    clzz = 'alert-info';
+                    clzz = 'btn-warning';
+                    break;
+
+                case 'failed':
+                    clzz = 'btn-danger';
                     break;
 
                 default:
-                    clzz = 'alert-danger';
+                    clzz = 'btn-info';
                     break;
             }
             html += '<li class="list-group-item">' +
                 '<div class="media">' +
                     '<div class="media-left">' +
-                        '<img  height="160" src="../png/' + _specs[i].id + '.png">' +
+                        '<a href="' + _specs[i].id + '.html">' +
+                            '<img height="135" src="../png/' + _specs[i].id + '.png">' +
+                        '</a>' +
                     '</div>' +
                     '<div class="media-body">' +
-                        '<a href="' + _specs[i].id + '.html" target="_blank">' +
-                            _specs[i].fullName +
-                        '</a>' +
-                        '<div class="alert alert-info">' + _specs[i].description  +' </div>' +
-                        '<div class="alert ' + clzz + '">' + _specs[i].status +' </div>' +
+                        '<h2>' + _specs[i].id + '</h2>' +
+                        '<p>' + _specs[i].fullName + '</p>' +
+                        '<a href="' + _specs[i].id + '.html" class="btn ' + clzz + '">' +
+                            '<span class="glyphicon glyphicon-search"></span> ' +
+                            _specs[i].status +
+                        ' </a>' +
                     '</div>' +
                 '</div>' +
             '</li>';

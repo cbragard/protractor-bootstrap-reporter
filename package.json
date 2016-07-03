@@ -1,6 +1,6 @@
 {
   "name": "protractor-html-reporter",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "HTML reporter for Protractor and jasmine2",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "end2end",
     "bdd"
   ],
-  "author": "Christophe Bragard <christophe.bragard@e-xode.net> (http://github.e-xode.net/)",
+  "author": "Christophe Bragard <christophe.bragard@e-xode.net> (https://github.com/cbragard)",
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/cbragard/protractor-html-reporter/issues"
