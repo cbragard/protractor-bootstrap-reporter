@@ -1,6 +1,6 @@
-# protractor-html-reporter
+# protractor-bootstrap-reporter
 
-[![Build Status](https://travis-ci.org/cbragard/protractor-html-reporter.svg?branch=master)](https://travis-ci.org/cbragard/protractor-html-reporter)
+[![Build Status](https://travis-ci.org/cbragard/protractor-bootstrap-reporter.svg?branch=master)](https://travis-ci.org/cbragard/protractor-bootstrap-reporter)
 
 Html reporter for protractor and jasmine2 :
   - provides json / html & png formats for each test/spec

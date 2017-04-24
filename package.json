@@ -1,6 +1,6 @@
 {
-  "name": "protractor-html-reporter",
-  "version": "0.0.6",
+  "name": "protractor-bootstrap-reporter",
+  "version": "0.0.1",
   "description": "HTML reporter for Protractor and jasmine2",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cbragard/protractor-html-reporter.git"
+    "url": "https://github.com/cbragard/protractor-bootstrap-reporter.git"
   },
   "keywords": [
     "jasmine2",
@@ -26,7 +26,7 @@
   "author": "Christophe Bragard <christophe.bragard@e-xode.net> (https://github.com/cbragard)",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/cbragard/protractor-html-reporter/issues"
+    "url": "https://github.com/cbragard/protractor-bootstrap-reporter/issues"
   },
   "dependencies": {
     "mkdirp": "^0.5.0",
