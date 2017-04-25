@@ -1,29 +1,19 @@
-describe('SPEC 2', function() {
+describe('end2end', function() {
 
-    it('2 should add a todo', function() {
-        browser.get('http://www.angularjs.org');
-
-        element(by.model('todoList.todoText')).sendKeys('write a protractor test');
-        element(by.css('[value="add"]')).click();
-
-        var todoList = element.all(by.repeater('todo in todoList.todos'));
-        expect(todoList.count()).toEqual(3);
-        expect(todoList.count()).toEqual(6); //Failure
-        expect(todoList.get(2).getText()).toEqual('write a protractor test');
+    beforeEach(() => {
+      browser.get('https://angular.io/');
     });
 
-    it('2 second it', function() {
-        browser.get('http://www.angularjs.org');
-
-        element(by.model('todoList.todoText')).sendKeys('write a protractor test');
-        element(by.css('[value="add"]')).click();
-
-        var todoList = element.all(by.repeater('todo in todoList.todos'));
-        expect(todoList.count()).toEqual(3);
-        expect(todoList.count()).toEqual(3);
-        expect(todoList.count()).toEqual(3);
-        expect(todoList.count()).toEqual(3);
-        expect(todoList.get(2).getText()).toEqual('write a protractor test');
+    it('should have a title', () => {
+      browser
+          .getTitle()
+          .then((subject) => {
+              expect(subject).toEqual('One framework. - Angular');
+          });
     });
 
+    it('should have a hero logo', () => {
+        let logo = element(by.css('.hero-logo'));
+        expect(logo.isPresent()).toBeTruthy();
+    });
 });

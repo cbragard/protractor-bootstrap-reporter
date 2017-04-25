@@ -1,7 +1,7 @@
-// An example configuration file
-var phantomjs = require('phantomjs-prebuilt');
+'use strict';
+
+let phantomjs = require('phantomjs-prebuilt');
 exports.config = {
-    // Capabilities to be passed to the webdriver instance.
     capabilities: {
         'browserName': 'phantomjs',
         'phantomjs.binary.path': phantomjs.path,
@@ -10,9 +10,10 @@ exports.config = {
     directConnect: false,
     specs: ['spec/**/*.e2e.js'],
     onPrepare: function() {
-        var ProtractorHTMLReporter = require('./index.js');
-        jasmine.getEnv().addReporter(new ProtractorHTMLReporter({
+        var ProtractorBootstrapReporter = require('./index.js');
+        jasmine.getEnv().addReporter(new ProtractorBootstrapReporter({
             path: 'spec/report'
         }));
+        browser.driver.manage().window().setSize(960, 600);
     }
 };

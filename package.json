@@ -1,10 +1,10 @@
 {
   "name": "protractor-bootstrap-reporter",
-  "version": "0.0.1",
-  "description": "HTML reporter for Protractor and jasmine2",
+  "version": "0.0.2",
+  "description": "Bootstrap HTML reporter for Protractor and jasmine2",
   "main": "index.js",
   "scripts": {
-    "test": "mocha spec/index-test.js",
+    "test": "mocha spec/test.spec.js",
     "e2e": "protractor protractor.config.js",
     "install" : "webdriver-manager update"
   },
@@ -30,11 +30,11 @@
   },
   "dependencies": {
     "mkdirp": "^0.5.0",
-    "protractor": "3.3.0",
-    "phantomjs-prebuilt"  : "2.1.7"
+    "protractor": "5.1.1",
+    "phantomjs-prebuilt"  : "2.1.14"
   },
   "devDependencies": {
-    "mocha" : "2.4.5",
+    "mocha" : "3.3.0",
     "chai" : "3.5.0"
   }
 }

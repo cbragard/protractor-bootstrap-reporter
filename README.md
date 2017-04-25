@@ -2,27 +2,29 @@
 
 [![Build Status](https://travis-ci.org/cbragard/protractor-bootstrap-reporter.svg?branch=master)](https://travis-ci.org/cbragard/protractor-bootstrap-reporter)
 
-Html reporter for protractor and jasmine2 :
+Bootstrap Html reporter for protractor and jasmine2 :
   - provides json / html & png formats for each test/spec
-  - bootstrap layout
+  - including bootstrap layout
 
 * protractor.config :
   ```javascript
-    exports.config = {
-        capabilities: {
-            'browserName': 'phantomjs',
-            'phantomjs.binary.path': phantomjs.path,
-        },
-        framework: 'jasmine2',
-        directConnect: false,
-        specs: ['spec/**/*[sS]pec.js'],
-        onPrepare: function() {
-            var ProtractorHTMLReporter = require('./index.js');
-            jasmine.getEnv().addReporter(new ProtractorHTMLReporter({
-                path: 'spec/report'
-            }));
-        }
-    };
+      let phantomjs = require('phantomjs-prebuilt');
+      exports.config = {
+          capabilities: {
+              'browserName': 'phantomjs',
+              'phantomjs.binary.path': phantomjs.path,
+          },
+          framework: 'jasmine2',
+          directConnect: false,
+          specs: ['spec/**/*.e2e.js'],
+          onPrepare: function() {
+              var ProtractorBootstrapReporter = require('./index.js');
+              jasmine.getEnv().addReporter(new ProtractorBootstrapReporter({
+                  path: 'spec/report'
+              }));
+              browser.driver.manage().window().setSize(960, 600);
+          }
+      };
   ```
 
 * generated reporting files :
