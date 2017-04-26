@@ -18,7 +18,7 @@ Bootstrap Html reporter for protractor and jasmine2 :
           directConnect: false,
           specs: ['spec/**/*.e2e.js'],
           onPrepare: function() {
-              var ProtractorBootstrapReporter = require('./index.js');
+              const ProtractorBootstrapReporter  = require('protractor-bootstrap-reporter');
               jasmine.getEnv().addReporter(new ProtractorBootstrapReporter({
                   path: 'spec/report'
               }));
