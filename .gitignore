@@ -1,4 +1,4 @@
-spec/report
+assets
 *.log
 node_modules
 

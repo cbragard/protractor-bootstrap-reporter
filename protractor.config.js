@@ -12,7 +12,7 @@ exports.config = {
     onPrepare: function() {
         var ProtractorBootstrapReporter = require('./index.js');
         jasmine.getEnv().addReporter(new ProtractorBootstrapReporter({
-            path: 'spec/report'
+            path: 'assets/report'
         }));
         browser.driver.manage().window().setSize(960, 600);
     }
