@@ -1,3 +1,6 @@
+2017/05/01
+- fixed missing whitespace label / propertyvalue
+- published 0.0.5
 2017/04/28
 - added changelog
 - fixed toggle click on expectations
